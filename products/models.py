@@ -32,4 +32,9 @@ class Product(models.Model):
 
 
 class File(models.Model):
-    pass
+    title = models.CharField(_('title'), max_length=50)
+    description = models.TextField(_('description'), blank=True)
+    is_enable = models.BooleanField(_('is enable'), default=True)
+    categories = models.ManyToManyField('Category', verbose_name=_('categories'), blank=True)
+    created_time = models.DateTimeField(_('created time'), auto_now_add=True)
+    update_time = models.DateTimeField(_('update time'), auto_now=True)
